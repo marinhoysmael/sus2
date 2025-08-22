@@ -19,3 +19,24 @@
 - Sprint 1: Cadastro de médicos.
 - Sprint 2: Agendamentos.
 - Sprint 3: Notificações.
+------------------------------------------------------------------------
+**Entidades:**
+
+-   **Medico**
+    -   `id` (PK)\
+    -   `nome`\
+    -   `crm` (único, regex CRM: `^\d{6}-[A-Z]{2}$`)\
+    -   `especialidade`
+-   **Paciente**
+    -   `id` (PK)\
+    -   `nome`\
+    -   `email` (único)\
+    -   `telefone`
+-   **Consulta**
+    -   `id` (PK)\
+    -   `medico_id` (FK → Medico)\
+    -   `paciente_id` (FK → Paciente)\
+    -   `data_hora` (obrigatório)\
+    -   `status` (enum: `AGENDADA`, `CANCELADA`, `REALIZADA`)\
+    -   **Regra:** Não permitir duas consultas no mesmo horário para o
+        mesmo médico.
